@@ -226,7 +226,9 @@ def reformat_table(lines: List[str], right_margin: int) -> List[str]:
     padds the cells and returns the new lines
     """
     # find the maximum width of the columns
-    max_width = [len(x.rstrip()) + right_margin for x in lines[0].split("|")]
+    max_width = []
+    if len(lines) > 0:
+        max_width = [len(x.rstrip()) + right_margin for x in lines[0].split("|")]
     max_cols = len(max_width)
     for line in lines:
         cols = [x.rstrip() for x in line.split("|")]
